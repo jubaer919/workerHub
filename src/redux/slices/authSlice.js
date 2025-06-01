@@ -18,6 +18,28 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const changePassword = createAsyncThunk(
+  "auth/changePassword",
+  async (email) => {
+    const response = await axios.post(
+      "http://localhost:8080/api/auth/forgot-password",
+      { email }
+    );
+    return response.data;
+  }
+);
+
+export const newPassword = createAsyncThunk(
+  "auth/newPassword",
+  async ({ password, token }) => {
+    const response = await axios.post(
+      `http://localhost:8080/api/auth/forgot-password/${token}`,
+      { password }
+    );
+    return response.data;
+  }
+);
+
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData, thunkApi) => {

@@ -1,10 +1,24 @@
 import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import router from "./router";
 
 function App() {
   return (
-    <div>
-      <h1>hello</h1>
-    </div>
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
+    </>
   );
 }
 

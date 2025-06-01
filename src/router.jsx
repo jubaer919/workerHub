@@ -4,6 +4,8 @@ import PublicLayout from "./routes/_layout/PublicLayout";
 import PrivateRoute from "./components/PrivateRoute";
 import ErrorPage from "./routes/_error";
 import GoogleSuccess from "./components/GoogleSuccess";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -55,10 +57,22 @@ const router = createBrowserRouter([
         path: "google-success",
         element: <GoogleSuccess />,
       },
+      {
+        path: "forgot-password",
+        lazy: () =>
+          import("./routes/auth/ForgotPassword").then((module) => ({
+            Component: module.default,
+          })),
+      },
+      {
+        path: "reset-password/:token",
+        lazy: () =>
+          import("./routes/auth/NewPassword").then((module) => ({
+            Component: module.default,
+          })),
+      },
     ],
   },
 ]);
 
-export default function Router() {
-  return <RouterProvider router={router} />;
-}
+export default router;
