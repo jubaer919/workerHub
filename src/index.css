@@ -4,3 +4,8 @@
   border: 1px solid red;
   margin: 0 auto;
 }
+
+.hollow-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+}
